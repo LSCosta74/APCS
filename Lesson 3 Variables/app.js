@@ -26,4 +26,4 @@
 // console.log("You rolled a: " + roll1)
 // console.log("and a: " + roll2) 
 // let totalDice = roll1 + roll2
-// console.log("For a t
+// console.log("For a total of + totalDice)
