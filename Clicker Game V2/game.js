@@ -23,13 +23,15 @@ function setup() {
 
   // Creates Difficulty Slider
   const difficultyLabel = createElement('h4', 'DIFFICULTY')
-  difficultySlider=createSlider(0, 5, 2, 0.5)
+  difficultySlider=createSlider(1, 5, 2, 0.5)
   difficultyLabel.position(width/20,height/8)
   difficultySlider.position(width/20,height/6)
 
 //Creates Score Display
-const scoreLabel = createElement('h4', 'SCORE: ' + score)
-scoreLabel.position(width/20,height/10.2)
+scoreDisplay = createElement('h4', 'SCORE: ' + score)
+scoreDisplay.position(width/20,height/10.2)
+
+bananaImg.mousePressed(increaseScore)
 }
 
 function draw() {
@@ -45,27 +47,27 @@ function mousePressed() {
   if (dist(mouseX, mouseY, bananaImg.x, bananaImg.y) > 200) {
     decreaseLives()
   }
-  if (dist(mouseX, mouseY, bananaImg.x, bananaImg.y) < 200) {
-    increaseScore()
-  }
 }
 
 function increaseScore() {
 score = score+1
-
+scoreDisplay.html('SCORE: ' + score)
 }
 
 function decreaseLives() {
 lives= lives-1
+livesDisplay.html('LIVES: ' + lives)
 }
 
 function checkWin() {
-if(score===winningNum)
+if(score===winningNum){
 window.location.href('win.html')
+}
 
 }
 
 function checkLose() {
-if(lives===0)
-window.location.href('lose.html')
+if(lives===0){
+  window.location.href('lose.html')
+}
 }
