@@ -39,13 +39,18 @@ function draw() {
   frameRate(difficultySlider.value())
   
   // Randomly Position Banana
-  bananaImg.position(random(width), random(height))
+  bananaImg.position(random(width/1.2), random(height/1.2))
   
 }
 
 function mousePressed() {
   if (dist(mouseX, mouseY, bananaImg.x, bananaImg.y) > 200) {
     decreaseLives()
+    checklose()
+  }
+  if (dist(mouseX, mouseY, bananaImg.x, bananaImg.y) < 200){
+    increaseScore()
+    checkWin()
   }
 }
 
@@ -61,13 +66,13 @@ livesDisplay.html('LIVES: ' + lives)
 
 function checkWin() {
 if(score===winningNum){
-window.location.href('win.html')
+window.location.href = 'win.html'
 }
 
 }
 
 function checkLose() {
 if(lives===0){
-  window.location.href('lose.html')
+  window.location.href = 'lose.html'
 }
 }
